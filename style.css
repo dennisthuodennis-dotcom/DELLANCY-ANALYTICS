@@ -1,0 +1,208 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #17243b;
+  line-height: 1.6;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+  color: #172c52;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.logo span, footer span {
+  color: #7257dc;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: #40506a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #7257dc;
+}
+
+.hero {
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  padding: 80px 10%;
+  background: linear-gradient(120deg, #102849, #273f76, #5141a5);
+  color: white;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.eyebrow {
+  color: #8069e8;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.hero .eyebrow {
+  color: #bcb0ff;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 65px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: #a99aff;
+}
+
+.hero-content > p:not(.eyebrow) {
+  color: #d8dfed;
+  max-width: 550px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background: #8067e9;
+  color: white;
+  padding: 13px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #654bd0;
+}
+
+.section {
+  padding: 85px 8%;
+}
+
+.alternate {
+  background: #f5f7fc;
+}
+
+.section-heading {
+  max-width: 650px;
+  margin-bottom: 40px;
+}
+
+.section-heading h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+  color: #172c52;
+}
+
+.section-heading > p:not(.eyebrow) {
+  color: #718096;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e6eaf2;
+  border-radius: 10px;
+  padding: 28px;
+  transition: 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(30,45,80,0.09);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #283f70;
+}
+
+.card p {
+  color: #718096;
+  font-size: 14px;
+}
+
+footer {
+  background: #102849;
+  color: white;
+  padding: 45px 8%;
+  text-align: center;
+}
+
+footer h2 {
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+footer p {
+  font-size: 13px;
+  color: #c4cde0;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 14px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .hero {
+    min-height: 450px;
+    padding: 60px 7%;
+  }
+
+  .section {
+    padding: 60px 7%;
+  }
+}
