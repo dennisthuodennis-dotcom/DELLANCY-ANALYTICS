@@ -4,37 +4,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>DELLANCY | Business Intelligence</title>
-  <meta name="description" content="Dellancy turns business data into actionable decisions.">
+
+  <meta name="description"
+    content="Dellancy turns business data into actionable decisions.">
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Excel file reader -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+  <!-- Chart visualisation library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
 <header class="header">
-  <a href="#" class="logo">DELLANCY<span>.</span></a>
+  <a href="#overview" class="logo">DELLANCY<span>.</span></a>
 
   <nav>
     <a href="#overview">Overview</a>
     <a href="#analytics">Analytics</a>
+    <a href="#workspace">Workspace</a>
     <a href="#industries">Industries</a>
     <a href="#templates">Business Templates</a>
     <a href="#about">About</a>
   </nav>
 </header>
 
+<!-- HERO SECTION -->
 <section class="hero" id="overview">
   <div class="hero-content">
     <p class="eyebrow">BUSINESS ANALYTICS & INTELLIGENCE</p>
+
     <h1>Turn Data Into <span>Decisions.</span></h1>
+
     <p>
       Understand your market, measure performance and
       discover opportunities through intelligent data analysis.
     </p>
-    <a href="#analytics" class="btn">Explore Analytics</a>
+
+    <a href="#workspace" class="btn">Enter Analytics Workspace</a>
   </div>
 </section>
 
+<!-- ANALYTICS INTRODUCTION -->
 <section class="section" id="analytics">
+
   <div class="section-heading">
     <p class="eyebrow">INTELLIGENCE</p>
     <h2>Business Analytics</h2>
@@ -42,6 +60,7 @@
   </div>
 
   <div class="cards">
+
     <article class="card">
       <h3>Market Insights</h3>
       <p>Understand market movements, pricing trends and opportunities.</p>
@@ -56,24 +75,193 @@
       <h3>Data Intelligence</h3>
       <p>Discover patterns and make informed strategic decisions.</p>
     </article>
+
   </div>
+
 </section>
 
+<!-- ANALYTICS WORKSPACE -->
+<section class="section workspace-section" id="workspace">
+
+  <div class="section-heading">
+    <p class="eyebrow">DELLANCY INTELLIGENCE ENGINE</p>
+    <h2>Analytics Workspace</h2>
+    <p>Upload your business data and begin exploring your numbers.</p>
+  </div>
+
+  <!-- UPLOAD AREA -->
+  <div class="upload-panel">
+
+    <div class="upload-icon">↑</div>
+
+    <h3>Import Your Dataset</h3>
+
+    <p>Upload CSV or Excel files to begin your analysis.</p>
+
+    <label for="fileInput" class="btn upload-button">
+      Choose Dataset
+    </label>
+
+    <input
+      type="file"
+      id="fileInput"
+      accept=".csv,.xlsx,.xls"
+      hidden
+    >
+
+    <p id="fileName" class="file-name">No file selected</p>
+
+    <p id="uploadStatus" class="status-message">
+      Your data is processed locally in your browser.
+    </p>
+
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="dashboard hidden">
+
+    <div class="dashboard-heading">
+      <div>
+        <p class="eyebrow">DATA OVERVIEW</p>
+        <h3>Dataset Performance</h3>
+        <p id="datasetName"></p>
+      </div>
+
+      <button id="exportButton" class="btn">
+        Export CSV
+      </button>
+    </div>
+
+    <!-- KPI CARDS -->
+    <div class="kpi-grid">
+
+      <div class="kpi-card">
+        <p>Total Records</p>
+        <h2 id="totalRecords">0</h2>
+      </div>
+
+      <div class="kpi-card">
+        <p>Total Columns</p>
+        <h2 id="totalColumns">0</h2>
+      </div>
+
+      <div class="kpi-card">
+        <p>Numeric Columns</p>
+        <h2 id="numericColumns">0</h2>
+      </div>
+
+      <div class="kpi-card">
+        <p>Average Value</p>
+        <h2 id="averageValue">—</h2>
+      </div>
+
+    </div>
+
+    <!-- COLUMN SELECTOR -->
+    <div class="analysis-panel">
+
+      <h3>Explore Your Data</h3>
+
+      <label for="columnSelect">Select a numeric column:</label>
+
+      <select id="columnSelect">
+        <option value="">Upload a dataset first</option>
+      </select>
+
+      <div class="metric-grid">
+
+        <div>
+          <p>Total</p>
+          <h3 id="sumValue">—</h3>
+        </div>
+
+        <div>
+          <p>Maximum</p>
+          <h3 id="maxValue">—</h3>
+        </div>
+
+        <div>
+          <p>Minimum</p>
+          <h3 id="minValue">—</h3>
+        </div>
+
+        <div>
+          <p>Average</p>
+          <h3 id="selectedAverage">—</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CHART -->
+    <div class="analysis-panel">
+
+      <h3>Data Visualisation</h3>
+
+      <div class="chart-container">
+        <canvas id="dataChart"></canvas>
+      </div>
+
+    </div>
+
+    <!-- DATA TABLE -->
+    <div class="analysis-panel">
+
+      <h3>Dataset Preview</h3>
+
+      <p id="previewInfo">Showing your imported records.</p>
+
+      <div class="table-container">
+        <table id="dataTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- INDUSTRIES -->
 <section class="section alternate" id="industries">
+
   <div class="section-heading">
     <p class="eyebrow">INDUSTRIES</p>
     <h2>Insights Across Industries</h2>
   </div>
 
   <div class="cards">
-    <article class="card"><h3>Real Estate</h3><p>Property prices, occupancy and market performance.</p></article>
-    <article class="card"><h3>Hospitality</h3><p>Hotel performance, revenue and customer trends.</p></article>
-    <article class="card"><h3>Retail</h3><p>Sales performance, inventory and consumer behaviour.</p></article>
-    <article class="card"><h3>Healthcare</h3><p>Operational performance and resource utilisation.</p></article>
+
+    <article class="card">
+      <h3>Real Estate</h3>
+      <p>Property prices, occupancy and market performance.</p>
+    </article>
+
+    <article class="card">
+      <h3>Hospitality</h3>
+      <p>Hotel performance, revenue and customer trends.</p>
+    </article>
+
+    <article class="card">
+      <h3>Retail</h3>
+      <p>Sales performance, inventory and consumer behaviour.</p>
+    </article>
+
+    <article class="card">
+      <h3>Healthcare</h3>
+      <p>Operational performance and resource utilisation.</p>
+    </article>
+
   </div>
+
 </section>
 
+<!-- BUSINESS TEMPLATES -->
 <section class="section" id="templates">
+
   <div class="section-heading">
     <p class="eyebrow">RESOURCES</p>
     <h2>Business Templates</h2>
@@ -81,6 +269,7 @@
   </div>
 
   <div class="cards">
+
     <article class="card">
       <h3>Financial Templates</h3>
       <p>Budgeting, expense tracking and financial planning.</p>
@@ -95,27 +284,40 @@
       <h3>Data Trackers</h3>
       <p>Organise business data and monitor important metrics.</p>
     </article>
+
   </div>
+
 </section>
 
+<!-- ABOUT -->
 <section class="section alternate" id="about">
+
   <div class="section-heading">
     <p class="eyebrow">ABOUT DELLANCY</p>
     <h2>Clarity Behind Every Decision.</h2>
+
     <p>
       Dellancy is a business intelligence initiative focused on
       making data understandable, accessible and useful.
     </p>
   </div>
+
 </section>
 
+<!-- FOOTER -->
 <footer>
+
   <h2>DELLANCY<span>.</span></h2>
+
   <p>Business Analytics & Intelligence</p>
+
   <p>Contact: dellancyinsights@gmail.com</p>
+
   <p>© 2026 Dellancy. All rights reserved.</p>
+
 </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
